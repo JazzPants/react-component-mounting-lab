@@ -7,6 +7,13 @@ class Timer extends Component {
   };
 
   // add your code here
+  componentDidMount() {
+    this.interval = setInterval(this.clockTick, 1000)
+  }
+
+  componentWillUnmount() { //clean up the interval if component is deleted so it's not running behind the scenes!
+    clearInterval(this.interval)
+  }
 
   render() {
     const { time, color } = this.state;
@@ -22,12 +29,13 @@ class Timer extends Component {
 
   //clock functions
   clockTick = () => {
+    console.log(`Running ${this.state.color}`)
     this.setState(prevState => ({
       time: prevState.time + 1
     }));
   };
 
-  stopClock = () => {
+  stopClock = () => { //stop the interval if we want to stop the timer, but still want to see the component
     clearInterval(this.interval);
   };
 
