@@ -11,7 +11,7 @@ class Timer extends Component {
     this.interval = setInterval(this.clockTick, 1000)
   }
 
-  componentWillUnmount() { //clean up the interval if component is deleted so it's not running behind the scenes!
+  componentWillUnmount() { //clean up the interval(ongoing process) if component is deleted so it's not running behind the scenes!
     clearInterval(this.interval)
   }
 
